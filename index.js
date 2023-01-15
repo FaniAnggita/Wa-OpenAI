@@ -1,9 +1,9 @@
 require("http").createServer((_, res) => res.end("Berjalan coy")).listen(8080)
 
-const sessionName = 'yusril'
-const donet = 'https://saweria.co/sansekai'
-const owner = ['6287878817169']
-const { default: sansekaiConnect, useSingleFileAuthState, DisconnectReason, fetchLatestBaileysVersion, generateForwardMessageContent, prepareWAMessageMedia, generateWAMessageFromContent, generateMessageID, downloadContentFromMessage, makeInMemoryStore, jidDecode, proto, getContentType } = require("@adiwajshing/baileys")
+const sessionName = 'Fani Anggita'
+const donet = 'https://saweria.co/fani'
+const owner = ['6281802716686']
+const { default: faniConnect, useSingleFileAuthState, DisconnectReason, fetchLatestBaileysVersion, generateForwardMessageContent, prepareWAMessageMedia, generateWAMessageFromContent, generateMessageID, downloadContentFromMessage, makeInMemoryStore, jidDecode, proto, getContentType } = require("@adiwajshing/baileys")
 const { state, saveState } = useSingleFileAuthState(`./${sessionName}.json`)
 const pino = require('pino')
 const { Boom } = require('@hapi/boom')
@@ -128,10 +128,10 @@ async function startHisoka() {
 		whitespaceBreak: false
 	}), 'green'))
 
-    const client = sansekaiConnect({
+    const client = faniConnect({
         logger: pino({ level: 'silent' }),
         printQRInTerminal: true,
-        browser: ['Wa-OpenAI - Sansekai','Safari','3.0'],
+        browser: ['Wa-OpenAI - fani','Safari','3.0'],
         auth: state
     })
 
@@ -147,7 +147,7 @@ async function startHisoka() {
             if (!client.public && !mek.key.fromMe && chatUpdate.type === 'notify') return
             if (mek.key.id.startsWith('BAE5') && mek.key.id.length === 16) return
             m = smsg(client, mek, store)
-            require("./sansekai")(client, m, chatUpdate, store)
+            require("./fani")(client, m, chatUpdate, store)
         } catch (err) {
             console.log(err)
         }
